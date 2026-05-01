@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary-color: #7161ef;
+  --secondary-color: #957fef;
+  --background-color: #f5f5f5;
+  --text-color: #02010a;
+}
+
+*{
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* custom style */
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bordir{border: 1px solid red;}
