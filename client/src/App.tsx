@@ -1,26 +1,36 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import "./App.css"
+
+// components
+import NotFound from "./pages/NotFound";
+import Loading from "./components/Loading";
+
+// hooks
+import useLoading from "./hooks/useLoading";
+
+// pages and layouts
 import OrderingLayout from "./layout/OrderingLayout";
 import Menu from "./pages/Menu";
 import Home from "./pages/Home";
 
 export default function App() {
-  return (
-    <Router basename="/teyvat-ordering-system">
-      <Navbar />
+  const isLoading = useLoading(3000);
 
-      <main>
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <div className="text-[var(--text-color)]">
+      <Router basename="/teyvat-ordering-system">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<OrderingLayout />}>
             <Route index element={<Menu  />} />
           </Route>
+          
+            <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
-
-      <Footer />
-    </Router>
+      </Router>
+    </div>
   )
 }
